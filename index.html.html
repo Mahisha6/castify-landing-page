@@ -1,0 +1,311 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif}
+.root{background:#08060f;min-height:960px;color:#e0d0f0;overflow:hidden}
+.splash{position:absolute;top:0;left:0;width:100%;min-height:960px;background:#08060f;display:flex;align-items:center;justify-content:center;z-index:100;transition:opacity 0.7s ease}
+.splash.gone{opacity:0;pointer-events:none}
+.splash-inner{text-align:center}
+.splash-title{font-family:'Bebas Neue',sans-serif;font-size:88px;letter-spacing:6px;line-height:1;overflow:hidden;display:flex;justify-content:center}
+.splash-title .sl{display:inline-block;opacity:0;transform:translateX(-80px);transition:opacity 0.4s ease,transform 0.4s ease}
+.splash-sub{font-size:13px;letter-spacing:3px;color:#9966cc;margin-top:10px;opacity:0;transition:opacity 0.5s ease;text-transform:uppercase}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:1px solid #1e1228;position:relative;z-index:10;background:#08060f}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;background:linear-gradient(90deg,#ff3cac,#b44fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-tabs{display:flex;gap:2px}
+.ntab{padding:7px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:none;background:transparent;color:#776688;font-family:'Inter',sans-serif;transition:all 0.2s;font-weight:500}
+.ntab.on{background:linear-gradient(135deg,#ff3cac,#b44fff);color:#fff;font-weight:600}
+.nav-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff3cac,#7b2fff);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.sec{display:none}.sec.on{display:block}
+.hero{padding:44px 24px 28px;text-align:center}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;line-height:1.15;color:#fff;margin-bottom:10px}
+.hero h1 span{background:linear-gradient(90deg,#ff3cac,#b44fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:14px;color:#776688;max-width:400px;margin:0 auto 22px;line-height:1.6}
+.hero-btn{padding:13px 32px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:linear-gradient(135deg,#ff3cac,#b44fff);color:#fff;letter-spacing:0.5px;font-family:'Inter',sans-serif}
+.gpills{display:flex;gap:7px;padding:0 24px 20px;overflow-x:auto;scrollbar-width:none}
+.gpills::-webkit-scrollbar{display:none}
+.gpill{white-space:nowrap;padding:6px 16px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #2a1a3a;background:transparent;color:#776688;transition:all 0.18s;font-family:'Inter',sans-serif}
+.gpill.on{background:linear-gradient(135deg,rgba(255,60,172,0.2),rgba(180,79,255,0.2));border-color:#b44fff;color:#e0a0ff}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;padding:0 24px 32px}
+.bcard{border-radius:10px;padding:18px;cursor:pointer;border:1px solid #1e1228;background:#0f0819;transition:border-color 0.2s,transform 0.15s}
+.bcard:hover{transform:translateY(-2px);border-color:#3a1a4a}
+.bcard.sel{border:1.5px solid #b44fff}
+.btop{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.bemo{width:48px;height:64px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:24px;background:rgba(180,79,255,0.12);flex-shrink:0}
+.bname{font-size:14px;font-weight:700;color:#f0e0ff;line-height:1.3;margin-bottom:3px}
+.bauth{font-size:12px;color:#554466}
+.btags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.btag{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:rgba(255,60,172,0.12);color:#ff88d0}
+.btag.hot{background:rgba(180,79,255,0.15);color:#cc88ff}
+.bstats{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.bvotes{font-size:12px;color:#554466}
+.bdays{font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;background:rgba(180,79,255,0.15);color:#cc88ff}
+.cvbtn{width:100%;padding:10px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;border:none;margin-top:12px;background:linear-gradient(135deg,#ff3cac,#b44fff);color:#fff;font-family:'Inter',sans-serif;transition:opacity 0.2s}
+.cvbtn:hover{opacity:0.85}
+.vpanel{padding:20px 24px}
+.bk{display:inline-flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;margin-bottom:18px;background:none;border:none;color:#776688;font-family:'Inter',sans-serif}
+.bk:hover{color:#e0a0ff}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:5px}
+.ph h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:#fff}
+.psub{font-size:13px;color:#554466;margin-bottom:18px}
+.csw{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.cbtn{padding:7px 16px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid #2a1a3a;background:transparent;color:#776688;font-family:'Inter',sans-serif;transition:all 0.18s}
+.cbtn.on{background:linear-gradient(135deg,#ff3cac,#b44fff);border-color:transparent;color:#fff}
+.voted-note{font-size:12px;margin-bottom:12px;padding:9px 13px;border-radius:6px;background:rgba(180,79,255,0.12);color:#cc88ff;font-weight:600;border-left:3px solid #b44fff}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:16px}
+.ccard{border-radius:10px;padding:14px;cursor:pointer;border:1px solid #1e1228;background:#0f0819;text-align:center;transition:all 0.18s;position:relative}
+.ccard:hover{border-color:#3a1a4a}
+.ccard.pk{border:1.5px solid #ff3cac;background:rgba(255,60,172,0.06)}
+.cav{width:50px;height:50px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;background:linear-gradient(135deg,rgba(255,60,172,0.2),rgba(180,79,255,0.2));color:#e0a0ff}
+.cname{font-size:13px;font-weight:700;color:#f0e0ff;margin-bottom:2px}
+.cfit{font-size:11px;color:#554466}
+.pbg{height:3px;border-radius:2px;background:#1e1228;margin:8px 0 3px}
+.pbar{height:3px;border-radius:2px;background:linear-gradient(90deg,#ff3cac,#b44fff);transition:width 0.5s ease}
+.ppct{font-size:10px;color:#554466}
+.pkbadge{position:absolute;top:7px;right:7px;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;background:linear-gradient(135deg,#ff3cac,#b44fff);color:#fff}
+.svbtn{width:100%;padding:14px;border-radius:6px;font-size:17px;letter-spacing:2px;font-weight:800;cursor:pointer;border:none;font-family:'Bebas Neue',sans-serif;transition:opacity 0.2s}
+.svbtn:not(:disabled){background:linear-gradient(135deg,#ff3cac,#b44fff);color:#fff}
+.svbtn:hover:not(:disabled){opacity:0.85}
+.svbtn:disabled{background:#1e1228;color:#443355;cursor:default}
+.rwrap{padding:20px 24px}
+.rmets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.rmet{background:#0f0819;border:1px solid #1e1228;border-radius:10px;padding:14px;text-align:center}
+.rmet .rv{font-size:26px;font-weight:800;font-family:'Bebas Neue',sans-serif;letter-spacing:1px}
+.rmet .rl{font-size:11px;color:#554466;margin-top:2px}
+.rbook{background:#0f0819;border:1px solid #1e1228;border-radius:10px;padding:16px;margin-bottom:12px}
+.rbhead{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.rbhead span{font-size:14px;font-weight:700;color:#f0e0ff}
+.rbadge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;background:rgba(255,60,172,0.12);color:#ff88d0;margin-left:auto}
+.rrow{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.rn{font-size:12px;font-weight:600;width:120px;flex-shrink:0;color:#c0a0d0}
+.rbbg{flex:1;height:6px;border-radius:3px;background:#1e1228;overflow:hidden}
+.rb{height:6px;border-radius:3px;background:linear-gradient(90deg,#ff3cac,#b44fff);transition:width 0.6s ease}
+.rp{font-size:11px;color:#554466;width:32px;text-align:right}
+.clbl{font-size:10px;color:#443355;font-weight:700;margin:10px 0 6px;text-transform:uppercase;letter-spacing:0.8px}
+.snote{background:#0f0819;border:1px solid #1e1228;border-radius:10px;padding:16px;text-align:center;margin-top:16px}
+.snote h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:#fff;margin-bottom:4px}
+.snote p{font-size:12px;color:#554466;margin-bottom:12px}
+.srow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.sbtn{padding:8px 18px;border-radius:4px;border:1px solid #2a1a3a;background:transparent;font-size:12px;font-weight:600;cursor:pointer;color:#c0a0d0;font-family:'Inter',sans-serif;transition:all 0.18s}
+.sbtn:hover{border-color:#b44fff;color:#e0a0ff}
+.dwrap{padding:20px 24px}
+.compose{background:#0f0819;border:1px solid #1e1228;border-radius:10px;padding:14px;margin-bottom:16px}
+.compose textarea{width:100%;background:transparent;border:none;outline:none;color:#e0d0f0;font-size:13px;resize:none;line-height:1.6;font-family:'Inter',sans-serif}
+.compose textarea::placeholder{color:#332244}
+.cfoot{display:flex;justify-content:flex-end;margin-top:10px}
+.postbtn{padding:8px 22px;border-radius:4px;font-size:13px;font-weight:700;cursor:pointer;border:none;background:linear-gradient(135deg,#ff3cac,#b44fff);color:#fff;font-family:'Inter',sans-serif}
+.dcard{background:#0f0819;border:1px solid #1e1228;border-radius:10px;padding:14px;margin-bottom:10px}
+.dh{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.dav{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;background:linear-gradient(135deg,rgba(255,60,172,0.25),rgba(180,79,255,0.25));color:#e0a0ff;flex-shrink:0}
+.dname{font-size:13px;font-weight:700;color:#f0e0ff}
+.dtime{font-size:11px;color:#443355}
+.dbody{font-size:13px;color:#887799;line-height:1.6;margin-bottom:10px}
+.dacts{display:flex;gap:14px}
+.dact{background:none;border:none;cursor:pointer;font-size:12px;color:#443355;display:flex;align-items:center;gap:4px;padding:0;font-family:'Inter',sans-serif;transition:color 0.15s}
+.dact:hover{color:#e0a0ff}
+.dact.lk{color:#ff3cac}
+.toast{background:#1a0d2e;border:1px solid #3a1a5a;color:#e0a0ff;padding:11px 20px;border-radius:6px;font-size:13px;font-weight:600;text-align:center;margin:0 24px 12px;opacity:0;transition:opacity 0.3s;pointer-events:none;border-left:3px solid #ff3cac}
+.toast.on{opacity:1}
+</style>
+
+<div class="root" id="root">
+  <div class="splash" id="splash">
+    <div class="splash-inner">
+      <div class="splash-title" id="stitle">
+        <span class="sl" style="color:#ff3cac">C</span><span class="sl" style="color:#d44aff">A</span><span class="sl" style="color:#ff3cac">S</span><span class="sl" style="color:#b44fff">T</span><span class="sl" style="color:#ff3cac">I</span><span class="sl" style="color:#cc44ff">F</span><span class="sl" style="color:#ff3cac">Y</span>
+      </div>
+      <div class="splash-sub" id="ssub">Where audiences shape the story</div>
+    </div>
+  </div>
+
+  <div id="app" style="opacity:0;transition:opacity 0.6s ease">
+    <div class="nav">
+      <div class="nav-logo">CASTIFY</div>
+      <div class="nav-tabs">
+        <button class="ntab on" id="t-browse" onclick="go('browse')">Browse</button>
+        <button class="ntab" id="t-vote" onclick="go('vote')">Vote</button>
+        <button class="ntab" id="t-results" onclick="go('results')">Results</button>
+        <button class="ntab" id="t-discuss" onclick="go('discuss')">Discuss</button>
+      </div>
+      <div class="nav-av">M</div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <div id="browse" class="sec on">
+      <div class="hero">
+        <h1>Your vote shapes<br><span>the silver screen</span></h1>
+        <p>Pick dream casts for upcoming book-to-film adaptations. Production teams see your votes live — your voice drives the story.</p>
+        <button class="hero-btn">Explore books</button>
+      </div>
+      <div class="gpills" id="gbar"></div>
+      <div class="bgrid" id="bgrid"></div>
+    </div>
+
+    <div id="vote" class="sec">
+      <div class="vpanel">
+        <button class="bk" onclick="go('browse')">← Back to browse</button>
+        <div id="vc"></div>
+      </div>
+    </div>
+
+    <div id="results" class="sec">
+      <div class="rwrap">
+        <div class="rmets">
+          <div class="rmet"><div class="rv" style="color:#ff3cac">48.2K</div><div class="rl">total votes</div></div>
+          <div class="rmet"><div class="rv" style="color:#b44fff">12</div><div class="rl">active polls</div></div>
+          <div class="rmet"><div class="rv" style="color:#ff88d0">94%</div><div class="rl">sent to studios</div></div>
+        </div>
+        <div id="rc"></div>
+        <div class="snote">
+          <h3>LIVE PIPELINE TO PRODUCTION TEAMS</h3>
+          <p>Studios review aggregated vote data every 48 hours. Your picks matter.</p>
+          <div class="srow">
+            <button class="sbtn" onclick="pop('Link copied!')">Copy link</button>
+            <button class="sbtn" onclick="pop('Shared to X!')">Post on X</button>
+            <button class="sbtn" onclick="pop('Shared!')">Instagram</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="discuss" class="sec">
+      <div class="dwrap">
+        <div class="compose">
+          <textarea id="cbox" rows="3" placeholder="Share your casting thoughts..."></textarea>
+          <div class="cfoot"><button class="postbtn" onclick="postC()">Post</button></div>
+        </div>
+        <div id="dl"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const books=[
+  {id:0,title:"It Ends With Us",author:"Colleen Hoover",e:"🌷",genre:"romance",votes:18400,days:5,hot:true,
+   chars:[
+    {name:"Lily Bloom",cs:[{name:"Blake Lively",fit:"Perfect lead energy",av:"BL",votes:9200},{name:"Abigail Cowen",fit:"Raw emotional depth",av:"AC",votes:5800},{name:"Joey King",fit:"Fierce & intense",av:"JK",votes:3400}]},
+    {name:"Ryle Kincaid",cs:[{name:"Justin Baldoni",fit:"Brooding & complex",av:"JB",votes:10100},{name:"Henry Cavill",fit:"Commanding presence",av:"HC",votes:5200},{name:"Glen Powell",fit:"Charming edge",av:"GP",votes:3100}]}
+  ]},
+  {id:1,title:"The Midnight Library",author:"Matt Haig",e:"📚",genre:"fantasy",votes:11200,days:12,hot:false,
+   chars:[
+    {name:"Nora Seed",cs:[{name:"Florence Pugh",fit:"Raw vulnerability",av:"FP",votes:6800},{name:"Emma Stone",fit:"Witty & layered",av:"ES",votes:3100},{name:"Daisy Edgar-Jones",fit:"Quiet strength",av:"DE",votes:1300}]},
+    {name:"Mrs Elm",cs:[{name:"Cate Blanchett",fit:"Ethereal authority",av:"CB",votes:7400},{name:"Tilda Swinton",fit:"Other-worldly",av:"TS",votes:2900},{name:"Angela Bassett",fit:"Grounded wisdom",av:"AB",votes:900}]}
+  ]},
+  {id:2,title:"Dune: Messiah",author:"Frank Herbert",e:"🏜️",genre:"sci-fi",votes:22600,days:3,hot:true,
+   chars:[
+    {name:"Paul Atreides",cs:[{name:"Timothée Chalamet",fit:"Already iconic",av:"TC",votes:18200},{name:"Austin Butler",fit:"Raw intensity",av:"AB",votes:3100},{name:"Jacob Elordi",fit:"Commanding",av:"JE",votes:1300}]},
+    {name:"Chani",cs:[{name:"Zendaya",fit:"Already iconic",av:"ZE",votes:19800},{name:"Anya Taylor-Joy",fit:"Fierce alt",av:"AT",votes:2800}]}
+  ]},
+  {id:3,title:"A Little Life",author:"Hanya Yanagihara",e:"🌿",genre:"drama",votes:8900,days:18,hot:false,
+   chars:[
+    {name:"Jude St. Francis",cs:[{name:"Andrew Garfield",fit:"Emotional depth",av:"AG",votes:5400},{name:"Paul Mescal",fit:"Raw authenticity",av:"PM",votes:3500}]},
+    {name:"Willem Ragnarsson",cs:[{name:"Oscar Isaac",fit:"Warmth & range",av:"OI",votes:4600},{name:"Taron Egerton",fit:"Quiet intensity",av:"TE",votes:4300}]}
+  ]}
+];
+
+let uv={},cb=null,cc=0,ag='all';
+let comments=[
+  {n:"Priya M",av:"PM",t:"2h ago",body:"Blake Lively was born to play Lily — the CoHo community would absolutely go wild.",lk:142,liked:false},
+  {n:"Jake R",av:"JR",t:"5h ago",body:"Timothée Chalamet HAS to return for Dune Messiah. No better Paul Atreides exists.",lk:98,liked:false},
+  {n:"Sophia L",av:"SL",t:"1d ago",body:"Florence Pugh for Nora Seed would be transformative. She carries existential weight like no one.",lk:76,liked:false},
+  {n:"Marcus T",av:"MT",t:"1d ago",body:"Paul Mescal for Jude in A Little Life would be devastating in the best way.",lk:54,liked:false}
+];
+
+function rGenres(){
+  const gs=['all','romance','fantasy','sci-fi','drama'],ls=['All','Romance','Fantasy','Sci-Fi','Drama'];
+  document.getElementById('gbar').innerHTML=gs.map((g,i)=>`<button class="gpill${g===ag?' on':''}" onclick="fg('${g}')">${ls[i]}</button>`).join('');
+}
+function fg(g){ag=g;rGenres();rGrid()}
+function rGrid(){
+  const list=ag==='all'?books:books.filter(b=>b.genre===ag);
+  document.getElementById('bgrid').innerHTML=list.map(b=>`
+    <div class="bcard${cb===b.id?' sel':''}" onclick="openB(${b.id})">
+      <div class="btop">
+        <div class="bemo">${b.e}</div>
+        <div style="flex:1"><div class="bname">${b.title}</div><div class="bauth">by ${b.author}</div>
+          <div class="btags"><span class="btag">${b.genre}</span>${b.hot?'<span class="btag hot">Hot</span>':''}</div>
+        </div>
+      </div>
+      <div class="bstats"><span class="bvotes">${b.votes.toLocaleString()} votes</span><span class="bdays">${b.days}d left</span></div>
+      <button class="cvbtn" onclick="event.stopPropagation();openB(${b.id})">Cast your vote</button>
+    </div>`).join('');
+}
+function openB(id){cb=id;cc=0;go('vote');rVote()}
+function rVote(){
+  if(cb===null){document.getElementById('vc').innerHTML='<p style="color:#443355;text-align:center;padding:40px">Select a book from Browse</p>';return}
+  const b=books[cb],ch=b.chars[cc],vid=`v${cb}_${cc}`,voted=uv[vid],tot=ch.cs.reduce((s,c)=>s+c.votes,0);
+  document.getElementById('vc').innerHTML=`
+    <div class="ph"><div style="font-size:28px">${b.e}</div><h2>${b.title}</h2></div>
+    <div class="psub">by ${b.author} · ${b.days} days left</div>
+    <div class="csw">${b.chars.map((c,i)=>`<button class="cbtn${i===cc?' on':''}" onclick="swC(${i})">${c.name}</button>`).join('')}</div>
+    ${voted!==undefined?'<div class="voted-note">✓ Voted · live results revealed below</div>':''}
+    <div class="cgrid">${ch.cs.map((c,i)=>{
+      const pct=Math.round(c.votes/tot*100),isPk=voted===i;
+      return`<div class="ccard${isPk?' pk':''}" onclick="castV(${i})">
+        ${isPk?'<div class="pkbadge">Your pick</div>':''}
+        <div class="cav">${c.av}</div><div class="cname">${c.name}</div><div class="cfit">${c.fit}</div>
+        ${voted!==undefined?`<div class="pbg"><div class="pbar" style="width:${pct}%"></div></div><div class="ppct">${pct}%</div>`:''}
+      </div>`;}).join('')}
+    </div>
+    <button class="svbtn" ${voted===undefined?'disabled':''} onclick="subV()">${voted!==undefined?'SUBMIT TO PRODUCTION TEAM →':'SELECT A CANDIDATE TO VOTE'}</button>`;
+}
+function swC(i){cc=i;rVote()}
+function castV(ci){
+  const vid=`v${cb}_${cc}`;
+  if(uv[vid]===ci)return;
+  if(uv[vid]!==undefined)books[cb].chars[cc].cs[uv[vid]].votes--;
+  uv[vid]=ci;books[cb].chars[cc].cs[ci].votes++;rVote();
+}
+function subV(){pop('Vote sent to the production team!');setTimeout(()=>go('results'),1300)}
+function rResults(){
+  document.getElementById('rc').innerHTML=books.map(b=>`
+    <div class="rbook">
+      <div class="rbhead"><span style="font-size:18px">${b.e}</span><span>${b.title}</span><span class="rbadge">Live</span></div>
+      ${b.chars.map(ch=>{
+        const tot=ch.cs.reduce((s,c)=>s+c.votes,0);
+        return`<div class="clbl">${ch.name}</div>${[...ch.cs].sort((a,b)=>b.votes-a.votes).map(c=>{
+          const pct=Math.round(c.votes/tot*100);
+          return`<div class="rrow"><div class="rn">${c.name}</div><div class="rbbg"><div class="rb" style="width:${pct}%"></div></div><div class="rp">${pct}%</div></div>`;}).join('')}`;}).join('')}
+    </div>`).join('');
+}
+function rDiscuss(){
+  document.getElementById('dl').innerHTML=comments.map((c,i)=>`
+    <div class="dcard">
+      <div class="dh"><div class="dav">${c.av}</div><div><div class="dname">${c.n}</div><div class="dtime">${c.t}</div></div></div>
+      <div class="dbody">${c.body}</div>
+      <div class="dacts">
+        <button class="dact${c.liked?' lk':''}" onclick="lkC(${i})">${c.liked?'♥':'♡'} ${c.lk}</button>
+        <button class="dact" onclick="pop('Reply posted!')">↩ Reply</button>
+      </div>
+    </div>`).join('');
+}
+function lkC(i){comments[i].liked=!comments[i].liked;comments[i].lk+=comments[i].liked?1:-1;rDiscuss()}
+function postC(){
+  const b=document.getElementById('cbox'),t=b.value.trim();if(!t)return;
+  comments.unshift({n:"You",av:"YO",t:"just now",body:t,lk:0,liked:false});
+  b.value='';rDiscuss();pop('Comment posted!');
+}
+function go(t){
+  document.querySelectorAll('.sec').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.ntab').forEach(e=>e.classList.remove('on'));
+  document.getElementById(t).classList.add('on');
+  document.getElementById('t-'+t).classList.add('on');
+  if(t==='results')rResults();
+  if(t==='discuss')rDiscuss();
+  if(t==='browse'){rGenres();rGrid();}
+  if(t==='vote')rVote();
+}
+function pop(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.classList.add('on');
+  setTimeout(()=>el.classList.remove('on'),2500);
+}
+function splash(){
+  document.querySelectorAll('.sl').forEach((el,i)=>setTimeout(()=>{el.style.opacity='1';el.style.transform='translateX(0)'},i*100));
+  setTimeout(()=>document.getElementById('ssub').style.opacity='1',750);
+  setTimeout(()=>{document.getElementById('splash').classList.add('gone');document.getElementById('app').style.opacity='1';go('browse');},1700);
+}
+rGenres();rGrid();rResults();rDiscuss();splash();
+</script>
