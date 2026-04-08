@@ -12,7 +12,7 @@
 
 ---
 
-## 📸 Preview
+##  Preview
 
 ![Castify UI](./assets/castify-preview.png)
 
@@ -21,7 +21,7 @@
 
 ---
 
-## 🚀 Features
+##  Features
 
 * 🗳️ Vote for actors for each character
 * 📊 View live voting trends
@@ -31,7 +31,7 @@
 
 ---
 
-## 💡 Idea
+##  Idea
 
 Castify allows fans to:
 
@@ -41,7 +41,7 @@ Castify allows fans to:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 * HTML
 * CSS
@@ -49,7 +49,7 @@ Castify allows fans to:
 
 ---
 
-## 📂 Project Setup
+##  Project Setup
 
 ```bash
 git clone https://github.com/Mahisha6/castify-landing-page.git
@@ -59,7 +59,7 @@ Open `index.html` in your browser.
 
 ---
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 * User login & profiles
 * Comment/discussion section
