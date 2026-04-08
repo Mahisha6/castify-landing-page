@@ -1,6 +1,4 @@
-Here’s a **clean, professional README.md** with a placeholder for your cropped screenshot 👇 (you just need to upload the cropped image to your repo and replace the filename)
 
----
 
 # 🎬 Castify
 
